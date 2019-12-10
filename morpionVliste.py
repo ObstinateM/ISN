@@ -27,12 +27,12 @@ def clic(event):
             place = Can.create_text(coord_x, coord_y, text = 'O', font = 'Arial 96 bold', fill = 'blue')
             Liste[ligne][colonne] = 1
             pair += 1
-            joueur.set('C\'est au Croix de jouer.')
+            joueur.set('C\'est aux Croix de jouer !')
         else:
             place = Can.create_text(coord_x, coord_y, text = 'X', font = 'Arial 96 bold', fill = 'red')
             Liste[ligne][colonne] = 2
             pair += 1
-            joueur.set('C\'est au Rond de jouer.')
+            joueur.set('C\'est aux Ronds de jouer !')
     ListeCoup.append(place)
     print(Liste)
 
@@ -67,25 +67,25 @@ def clic(event):
     # Colonne
     for i in range(0,3):
         if(Liste[i][0]==Liste[i][1]==Liste[i][2]==2):
-            Can.create_text(300, 175, text = 'Les croix ont gagnés !', font = 'Arial 20 bold')
+            Can.create_text(300, 175, text = 'Les croix ont gagnées !', font = 'Arial 20 bold')
             Can.unbind('<Button-1>')
             gagne = False
 
     #lignes    
     for i in range(0,3):
         if(Liste[0][i]==Liste[1][i]==Liste[2][i]==2):
-            Can.create_text(300, 175, text = 'Les croix ont gagnés !', font = 'Arial 20 bold')
+            Can.create_text(300, 175, text = 'Les croix ont gagnées !', font = 'Arial 20 bold')
             Can.unbind('<Button-1>')
             gagne = False
 
     #diagonales
     if(Liste[0][0]==Liste[1][1]==Liste[2][2]==2):
-        Can.create_text(300, 175, text = 'Les croix ont gagnés !', font = 'Arial 20 bold')
+        Can.create_text(300, 175, text = 'Les croix ont gagnées !', font = 'Arial 20 bold')
         Can.unbind('<Button-1>')
         gagne = False
 
     if(Liste[0][2]==Liste[1][1]==Liste[2][0]==2):
-        Can.create_text(300, 175, text = 'Les croix ont gagnés !', font = 'Arial 20 bold')
+        Can.create_text(300, 175, text = 'Les croix ont gagnées !', font = 'Arial 20 bold')
         Can.unbind('<Button-1>')
         gagne = False
 
@@ -98,7 +98,7 @@ def clic(event):
                 #print(egalite)
 
     if egalite == 0 and gagne:
-        Can.create_text(300, 175, text = 'Egalité !', font = 'Arial 20 bold')
+        Can.create_text(300, 175, text = 'Égalité !', font = 'Arial 20 bold')
         Can.unbind('<Button-1>')
 
 def cancel():
@@ -125,7 +125,7 @@ def reset():
     Can.create_line(0, 400, 600, 400, fill = 'black')
     Can.pack()
     Can.bind('<Button-1>', clic)
-    joueur.set('C\'est au Rond de jouer.')
+    joueur.set('C\'est aux Ronds de jouer !')
     egalite = 0
     gagne = True
     #Liste.clear()
@@ -151,14 +151,14 @@ Can.pack()
 Quitter = Button(root, text = 'Quitter', command = root.destroy)
 Quitter.pack(side = BOTTOM)
  
-Cancel = Button(root, text = 'Annuler le dernier coup  (Ne fonctionne pas : aucune idee pour annuler le dernier ajout dans une liste)', command = cancel)
+Cancel = Button(root, text = 'Annuler le dernier coup  (Ne fonctionne pas : \n aucune idee pour annuler le dernier ajout dans une liste)', command = cancel)
 Cancel.pack(side = BOTTOM)
 
 Reset = Button(root, text = 'Reset', command = reset)
 Reset.pack(side = BOTTOM)
 
 joueur = StringVar()
-joueur.set('C\'est au Rond de jouer.')
+joueur.set('C\'est aux Ronds de jouer !')
 Texte = Label(root, textvariable = joueur, font = 'Helvetica 16 italic', fg = 'red', bg = 'black')
 Texte.pack(side = BOTTOM)
 
